@@ -1,65 +1,49 @@
-import Image from "next/image";
+import AboutSection from "@/components/modules/home/AboutSection";
+import HeroSection from "@/components/modules/home/HeroSection";
+import InfoTicker from "@/components/modules/home/InfoTicker";
+import ServicesSection from "@/components/modules/home/ServicesSection";
+import Testimonials from "@/components/modules/home/Testimonials";
+import Footer from "@/components/modules/navigation/Footer";
 
 export default function Home() {
+  // Pizzacı konseptine uygun, güven veren ve iştah açan mesajlar
+  const infoTickerMessages = [
+    "🍕 Odun Ateşinde Gerçek İtalyan Pizzası",
+    "🛵 Bağcılar Geneline Hızlı Paket Servis",
+    "🌿 Günlük Taze Hazırlanan El Yapımı Hamur",
+    "💳 Kapıda Kredi Kartı ve NFC ile Ödeme İmkanı",
+    "👨‍👩‍👧‍👦 Ailenizle Keyifli Vakit Geçirebileceğiniz Sıcak Ortam",
+    "✨ Hijyen Standartlarına %100 Uygun Hazırlık"
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    // scroll-pt-[80px] ekledik (Header yüksekliğine göre ayarla)
+    <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth scroll-pt-12">
+      
+      {/* Hero + Ticker Bölümü */}
+      <section className="snap-start min-h-[110svh] md:min-h-full shrink-0 flex flex-col">
+          <HeroSection />
+        <InfoTicker items={infoTickerMessages} key={'Info Ticker'} interval={2000} />
+      </section>
+
+      {/* Diğer Bölümler */}
+      <section className="snap-start min-h-[150svh] md:min-h-full shrink-0 bg-base-100 pt-10" id="2">
+        <AboutSection />
+      </section>
+
+      <section className="snap-start min-h-[20svh] md:min-h-full shrink-0 bg-base-100" id="3">
+        <ServicesSection />
+      </section>
+
+      <section className="snap-start min-h-[150svh] md:min-h-full pt-2 shrink-0 bg-slate-50" id="4">
+        <Testimonials />
+      </section>
+{/* Footer Bölümü */}
+<section className="snap-start min-h-[170svh] shrink-0 bg-slate-900 flex items-center justify-center overflow-hidden">
+  <div className="w-full"> {/* İçeriği sarmalaması için */}
+    <Footer />
+  </div>
+</section>
+    </main>
   );
 }
